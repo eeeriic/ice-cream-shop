@@ -16,7 +16,7 @@ export const menuArray = [
         {
         name: "Big Ice Cream",
         ingredients: ["chocolate", "mint", "vanilla"],
-        price: 12,
+        price: 18,
         emoji: "🍨",
         id: 2
     }

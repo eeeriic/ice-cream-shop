@@ -4,6 +4,7 @@ const container = document.getElementById("container")
 const container2 = document.getElementById("container2")
 const precoFinal = document.getElementById("preco-final")
 const pedido = document.getElementById("pedido")
+const submit = document.getElementById("submit-btn")
 
 function render(arr) {
     return arr.map((item)=>{
@@ -95,3 +96,7 @@ function removeOrder(id) {
         container2.style.display = 'none';
     }
 }
+
+submit.addEventListener("click", function(){
+    
+})
