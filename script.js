@@ -22,6 +22,8 @@ function render(arr) {
     
 }
 
+container.innerHTML = render(menuArray)
+
 const pedidoArray = []
 
 container.addEventListener("click", function(e){
@@ -34,24 +36,29 @@ container.addEventListener("click", function(e){
 
 function addOrder(id) {
     
-    const target = menuArray.find((item)=>{
-        return item.id == id
-    })
+    const exist = pedidoArray.find((item)=>{return item.id == id})
+    if (exist) {
+        exist.quantity++
+    } else {
+        const target = menuArray.find((item) => {return item.id ==id})
 
-    if (target) {
-        pedidoArray.push(target)
+        if (target) {pedidoArray.push({...target, quantity: 1})}
     }
+
+    
 }
 
 function renderOrder() {
     let total = 0
 
+    console.log(pedidoArray)
     const pedidoHtml = pedidoArray.map((item) => {
-        total += item.price
+        total += item.price * item.quantity
+        
         return `
         <div class="pedido-div">
             <span class="pedido-span">
-                <h4>${item.name}</h4>
+                <h4>${item.quantity}x ${item.name}</h4>
                 <button class="remove-btn" data-remove="${item.id}">-</button>
             </span>
             <h4>${item.price}$</h4>
@@ -63,4 +70,28 @@ function renderOrder() {
     precoFinal.textContent = `${total}$`
 }
 
-container.innerHTML = render(menuArray)
+container2.addEventListener("click", function(e){
+    if(e.target.dataset.remove) {
+        removeOrder(e.target.dataset.remove)
+        renderOrder()
+    }
+})
+
+function removeOrder(id) {
+    const targetItem = pedidoArray.find((item) => item.id == id);
+    
+    if (targetItem && targetItem.quantity > 1) {
+        targetItem.quantity--;
+    } else {
+
+        const indexToRemove = pedidoArray.findIndex((item) => item.id == id);
+        
+        if (indexToRemove !== -1) {
+            pedidoArray.splice(indexToRemove, 1);
+        }
+    }
+
+    if (pedidoArray.length < 1) {
+        container2.style.display = 'none';
+    }
+}

@@ -130,6 +130,10 @@ main {
     justify-content: center;
 }
 
+.remove-btn:active {
+    background-color: red;
+}
+
 .container2 {
     flex: 1;
     display: none;
