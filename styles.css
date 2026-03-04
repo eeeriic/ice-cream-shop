@@ -38,6 +38,11 @@ main {
 
 /*##########*/
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .item {
     display: flex;
     justify-content: space-between;
@@ -76,3 +81,57 @@ main {
     border-color: pink;
 }
 
+/*##########*/
+
+.pedido-title {
+    text-align: center;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid black;
+}
+
+.pedido-div {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem auto;
+    align-items: center;
+}
+
+.pedido-span {
+    display: flex;
+}
+
+.preco-div {
+    border-top: 1px solid black;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem auto;
+    width: 100%;
+}
+
+.submit-btn {
+    margin-top: auto;
+    background-color: lightgreen;
+    border-radius: 10px;
+    height: 2rem;
+}
+
+.remove-btn {
+    border-radius: 50%;
+    height: 1.2rem;
+    width: 1.2rem;
+    font-size: 1rem;
+    background-color: pink;
+    border-color: red;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container2 {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+}
