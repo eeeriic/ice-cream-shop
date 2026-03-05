@@ -53,6 +53,7 @@ function addOrder(id) {
 }
 
 function renderOrder() {
+    if (pedidoArray.length < 1) {container2.style.display = "none"}
     let total = 0
 
     const pedidoHtml = pedidoArray.map((item) => {
@@ -110,11 +111,8 @@ closeModal.addEventListener("click", function(){
 form.addEventListener("submit", function(e){
     e.preventDefault()
     modal.style.display = "none"
-    container2.innerHTML = `
-    <div class="obrigado">
-        <h1>Obrigado por comprar na Pará Sorvetes</h1>
-        <h2 class="emoji">😘</h2>
-    </div>                      
-    `
+    alert("Obrigador por Comprar")
+    pedidoArray.length = 0
+    renderOrder()
 
 })
