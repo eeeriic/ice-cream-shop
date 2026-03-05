@@ -5,6 +5,9 @@ const container2 = document.getElementById("container2")
 const precoFinal = document.getElementById("preco-final")
 const pedido = document.getElementById("pedido")
 const submit = document.getElementById("submit-btn")
+const modal = document.getElementById("pagamento")
+const closeModal = document.getElementById("close-modal")
+const form = document.getElementById("form")
 
 function render(arr) {
     return arr.map((item)=>{
@@ -52,7 +55,6 @@ function addOrder(id) {
 function renderOrder() {
     let total = 0
 
-    console.log(pedidoArray)
     const pedidoHtml = pedidoArray.map((item) => {
         total += item.price * item.quantity
         
@@ -98,5 +100,21 @@ function removeOrder(id) {
 }
 
 submit.addEventListener("click", function(){
-    
+    modal.style.display = "flex"
+})
+
+closeModal.addEventListener("click", function(){
+    modal.style.display = "none"
+})
+
+form.addEventListener("submit", function(e){
+    e.preventDefault()
+    modal.style.display = "none"
+    container2.innerHTML = `
+    <div class="obrigado">
+        <h1>Obrigado por comprar na Pará Sorvetes</h1>
+        <h2 class="emoji">😘</h2>
+    </div>                      
+    `
+
 })
